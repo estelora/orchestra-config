@@ -1,6 +1,8 @@
 # Orchestra Playbook, Protoype I
 > *Level of Complexity:* Manual Configuration
 
+## On your local machine:
+
 ### I. Create a local Ubuntu Virtual Machine (VM).
 #### 1. Set up Vagrant to create a Linux development environment.
 
@@ -20,8 +22,26 @@
   * Access your VM:
     *  `vagrant ssh`
 
-### II. Install Node and Node Dependencies
-> This will be the basis for `bootstrap.sh`
+## Inside the VM:
 
-### III. Set up a PHP Server
+### II. Install Node.js and dependencies.
+> This will be the basis for `bootstrap.sh`. We need Node.js and some other things to create Orchestra.
+
+#### 1. Use `node` to check if Node.js is installed:
+* It is not installed on this VM.
+  
+#### 2.  Install [Node.js](https://nodejs.org/en/) the Ubuntu package manager:
+* `sudo apt-get -y install nodejs`
+  
+#### 3. Install [npm](https://docs.npmjs.com/), the package manager for Node.js with the Ubuntu package manager:
+* `sudo apt-get -y install npm` 
+
+#### 4. Install the [lodash](https://www.npmjs.com/package/lodash) javascript library with npm:
+* `npm i --save lodash`
+
+### III. Set up a PHP Server 
+
+
+
+
 
