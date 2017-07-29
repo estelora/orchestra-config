@@ -44,5 +44,30 @@
 
 ### III. Set up a PHP Server 
 
-#### 1. 
+#### 1. Install the Apache2 Server
+* `sudo apt-get -y install apache2`
+* Check the server is up with `curl http://127.0.0.1`
+* Curl returns the regular ubuntu default page.
+
+#### 2. Install PHP and its dependencies
+* `sudo apt-get -y install php5 libapache2-mod-php5 php5-mcrypt`
+
+#### Add the servername to the apache2.conf file.
+
+* Add this line to the bottom of the file: `ServerName localhost`
+
+##### 3. Tell Apache2 to follow the PHP index file by changing /etc/apache/modes-enabled/dif.conf.
+* `sudo vi /etc/apache2/mods-enabled/dir.conf`
+* Move index.php to the first in this file, such that the file looks like this: 
+```
+<IfModule mod_dir.c>
+    DirectoryIndex index.php index.html index.cgi index.pl index.xhtml index.htm
+</IfModule>
+```
+4. Restart the service.
+* `sudo service apache2 restart`
+
+
+
+
 
