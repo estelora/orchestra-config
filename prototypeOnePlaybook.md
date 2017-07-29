@@ -35,14 +35,15 @@
   
 #### 2.  Install [Node.js](https://nodejs.org/en/) the Ubuntu package manager:
 * `sudo apt-get -y install nodejs`
+
+
+#### 3. Create a symlink for Node.js:
+* `sudo ln -s /usr/bin/nodejs /usr/bin/node`
   
-#### 3. Install [npm](https://docs.npmjs.com/), the package manager for Node.js with the Ubuntu package manager:
+#### 4. Install [npm](https://docs.npmjs.com/), the package manager for Node.js with the Ubuntu package manager:
 * `sudo apt-get -y install npm` 
 
-#### 4. Create a symlink for Node.js:
-* `sudo ln -s /usr/bin/nodejs /usr/bin/node`
-
-#### 4. Install the [lodash](https://www.npmjs.com/package/lodash) javascript library with npm:
+#### 5. Install the [lodash](https://www.npmjs.com/package/lodash) javascript library with npm:
 * `npm i --save lodash`
 
 ### III. Set up a PHP Server 
