@@ -29,6 +29,9 @@
 
 #### 1. Use `node` to check if Node.js is installed:
 * It is not installed on this VM.
+
+#### 2. Check for Ubuntu package updates.
+* `sudo apt-get update`
   
 #### 2.  Install [Node.js](https://nodejs.org/en/) the Ubuntu package manager:
 * `sudo apt-get -y install nodejs`
@@ -40,8 +43,7 @@
 * `npm i --save lodash`
 
 ### III. Set up a PHP Server 
+> We are going to set up a basic [LAMP stack]
 
-
-
-
+#### 1. 
 
