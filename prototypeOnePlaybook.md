@@ -43,7 +43,6 @@
 * `npm i --save lodash`
 
 ### III. Set up a PHP Server 
-> We are going to set up a basic [LAMP stack]
 
 #### 1. 
 
