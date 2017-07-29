@@ -59,14 +59,6 @@
 
 * Add this line to the bottom of the file: `ServerName localhost`
 
-##### 3. Tell Apache2 to follow the PHP index file by changing /etc/apache/modes-enabled/dif.conf.
-* `sudo vi /etc/apache2/mods-enabled/dir.conf`
-* Move index.php to the first in this file, such that the file looks like this: 
-```
-<IfModule mod_dir.c>
-    DirectoryIndex index.php index.html index.cgi index.pl index.xhtml index.htm
-</IfModule>
-```
 4. Restart the service.
 * `sudo service apache2 restart`
 
