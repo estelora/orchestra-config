@@ -46,24 +46,38 @@
 #### 5. Install the [lodash](https://www.npmjs.com/package/lodash) javascript library with npm:
 * `npm i --save lodash`
 
-### III. Set up a PHP Server 
+### III. Set up a PHP Application 
 
-#### 1. Install the Apache2 Server
-* `sudo apt-get -y install apache2`
+#### 1. Install the software we need
+* `sudo apt-get -y install apache2 libapache2-mod-php5`
 * Check the server is up with `curl http://127.0.0.1`
 * Curl returns the regular ubuntu default page.
 
-#### 2. Install PHP and its dependencies
-* `sudo apt-get -y install php5 libapache2-mod-php5 php5-mcrypt`
+#### 2. Install PHP 
+* `sudo apt-get -y install php5`
 
-#### Add the servername to the apache2.conf file.
+### IV. Insert our PHP App in the root directory of our web server.
+#### 1. Remove default apache homepage
+* `sudo rm /var/www/html/index.html`
 
-* Add this line to the bottom of the file: `ServerName localhost`
+#### 2. Insert our index.php into the root directory
+* `sudo vi /var/www/html/index.php`
+* Insert the content we need:
 
-4. Restart the service.
-* `sudo service apache2 restart`
+   ```
+   <?php
+   header("Content-Type: text/plain");
+   echo "Hello, world!\n"; 
+   ?>
+   ```
+
+#### 3. Restart the apache2 server
+* `sudo service restart apaches2`
 
 
+### V. Check everything is working in our VM
+#### 1. Check with curl for a 200 respone and the string "Hello, World!"
+* `curl -sv "http://ADDRESS"`
 
 
 
