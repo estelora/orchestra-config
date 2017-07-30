@@ -10,12 +10,14 @@
 
 #### 3. Get your shell on! :shell:
 * Execute bootstrap.sh
-  * `./bootstrap.sh`
+  * `sudo ./bootstrap.sh`
 * Execute install.sh
-  * `./install.sh`
+  * `sudo ./install.sh`
+ * Execute remove.sh
+  * `sudo ./restart.sh`
 * Execute configure.sh
-  * `./configure.sh` 
+  * `sudo ./configure.sh` 
 * Execute restart.sh
-  * `restart.sh`
+  * `sudo./restart.sh`
 #### Check that our PHP app is working on the webserver with curl
 * `curl -sv "http://ADDRESS"`
