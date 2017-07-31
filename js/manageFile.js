@@ -2,8 +2,8 @@ var fs = require('fs');
 
 function watchFile(path) {
   fs.watchFile(path, function (curr, prev) {
-    console.log(`the current mtime is: ${curr.mtime}`);
-    console.log(`the previous mtime was: ${prev.mtime}`)
+    console.log('the current mtime is: ${curr.mtime}');
+    console.log('the previous mtime was: ${prev.mtime}');
   });
 }
 
@@ -20,5 +20,4 @@ function deleteFile(filepath) {
     console.log('The file has been deleted!');
   });
 }
-
 
