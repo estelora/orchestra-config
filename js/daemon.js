@@ -1,14 +1,14 @@
 var shell = require('shelljs');
 
 function start(daemon) {
-  shell.exec('service start ' + daemon);
+  shell.exec('sudo service ' + daemon + ' start');
 }
 
 function stop(daemon) {
-  shell.exec('service stop ' + daemon);
+  shell.exec('sudo service' + daemon + ' stop');
 }
 
 function restart(daemon) {
-  shell.exec('service restart ' + daemon);
+  shell.exec('sudo service ' + daemon + ' restart');
 }
 
