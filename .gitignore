@@ -7,3 +7,6 @@
 # Ignore .swp and .swo files
 *.swp
 *.swo
+
+# Ignore node_modules
+node_modules

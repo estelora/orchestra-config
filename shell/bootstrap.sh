@@ -11,5 +11,3 @@ sudo ln -s /usr/bin/nodejs /usr/bin/node
 #install npm
 sudo apt-get -y install npm
 
-# install lodash
-npm i --save lodash
