@@ -7,15 +7,15 @@
 #### 1. Set up Vagrant to create a Linux development environment.
 
 * [Vagrant Installation Documentation](https://www.vagrantup.com/docs/installation/)
-* [Vagrant CLI](https://www.vagrantup.com/docs/cli/) 
+* [Vagrant CLI](https://www.vagrantup.com/docs/cli/)
 
 #### 2. Add the [_Ubuntu 14.04_]((https://app.vagrantup.com/ubuntu/boxes/trusty64) ) box to Vagrant:
 * `vagrant box add ubuntu/trusty64`
 
-#### 3. Create a directory as workspace for this project. 
- 
+#### 3. Create a directory as workspace for this project.
+
 #### 4. Inside this directory, initialize, start, and access your VM.
-  * Initialize your VM: 
+  * Initialize your VM:
     *  `vagrant init ubuntu/trusty64`
   * Start your VM:
     *  `vagrant up`
@@ -32,28 +32,25 @@
 
 #### 2. Check for Ubuntu package updates.
 * `sudo apt-get update`
-  
+
 #### 2.  Install [Node.js](https://nodejs.org/en/) the Ubuntu package manager:
 * `sudo apt-get -y install nodejs`
 
 
 #### 3. Create a symlink for Node.js:
 * `sudo ln -s /usr/bin/nodejs /usr/bin/node`
-  
+
 #### 4. Install [npm](https://docs.npmjs.com/), the package manager for Node.js with the Ubuntu package manager:
-* `sudo apt-get -y install npm` 
+* `sudo apt-get -y install npm`
 
-#### 5. Install the [lodash](https://www.npmjs.com/package/lodash) javascript library with npm:
-* `npm i --save lodash`
-
-### III. Set up a PHP Application 
+### III. Set up a PHP Application
 
 #### 1. Install the software we need
 * `sudo apt-get -y install apache2 libapache2-mod-php5`
 * Check the server is up with `curl http://127.0.0.1`
 * Curl returns the regular ubuntu default page.
 
-#### 2. Install PHP 
+#### 2. Install PHP
 * `sudo apt-get -y install php5`
 
 ### IV. Insert our PHP App in the root directory of our web server.
@@ -67,7 +64,7 @@
    ```
    <?php
    header("Content-Type: text/plain");
-   echo "Hello, world!\n"; 
+   echo "Hello, world!\n";
    ?>
    ```
 
