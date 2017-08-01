@@ -5,7 +5,7 @@ function start(daemon) {
 }
 
 function stop(daemon) {
-  shell.exec('sudo service' + daemon + ' stop');
+  shell.exec('sudo service ' + daemon + ' stop');
 }
 
 function restart(daemon) {
