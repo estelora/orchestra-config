@@ -1,23 +1,24 @@
 var fs = require('fs');
+var sh = require('sh');
 
 function watchFile(path) {
   fs.watchFile(path, function (curr, prev) {
-    console.log('the current mtime is: ${curr.mtime}');
-    console.log('the previous mtime was: ${prev.mtime}');
+    sh.echo('the current mtime is: ${curr.mtime}');
+    sh.echo('the previous mtime was: ${prev.mtime}');
   });
 }
 
 function writeFile(filepath, contents) {
   fs.writeFile(filepath, contents, (err) => {
     if (err) throw err;
-    console.log('The file ' + filepath + ' has been saved.');
+    sh.echo('The file ' + filepath + ' has been saved.');
   });
 }
 
 function deleteFile(filepath) {
   fs.unlink(filepath, (err) => {
     if (err) throw err;
-    console.log('The file ' + filepath + ' has been deleted!');
+    sh.echo('The file ' + filepath + ' has been deleted!');
   });
 }
 
