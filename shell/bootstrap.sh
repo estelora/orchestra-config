@@ -8,6 +8,5 @@ sudo apt-get -y install nodejs
 # create symlink for node
 sudo ln -s /usr/bin/nodejs /usr/bin/node
 
-#install npm
+# install npm
 sudo apt-get -y install npm
-
