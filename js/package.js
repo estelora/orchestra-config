@@ -1,10 +1,10 @@
 var sh = require('shelljs');
 
-function install(package) {
+exports.install = function install(package) {
   sh.exec('sudo apt-get -y install ' + package);
 }
 
-function remove(package) {
+exports.remove = function remove(package) {
   sh.exec('sudo apt-get -y remove ' + package);
 }
 
