@@ -1,14 +1,14 @@
 var sh = require('shelljs');
 
-function start(daemon) {
+exports.start = function start(daemon) {
   sh.exec('sudo service ' + daemon + ' start');
 }
 
-function stop(daemon) {
+exports.stop = function stop(daemon) {
   sh.exec('sudo service ' + daemon + ' stop');
 }
 
-function restart(daemon) {
+exports.restart = function restart(daemon) {
   sh.exec('sudo service ' + daemon + ' restart');
 }
 
