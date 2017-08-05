@@ -1,9 +1,14 @@
 var fs = require('fs');
+var format = require('string-template');
 var sh = require('shelljs');
+var silentState = sh.config.silent;
+sh.config.silent = true;
+
 
 /*
- * TODO: Add shell.js quiet mode to reduce stdout noise
  * TODO: Make this an npm library
+ * TODO: Add functionality to specify content and metadata (user, group, permissions) for a file.
+ * TODO: Add template string functionality.
  */
 
 // Package Manager
@@ -11,10 +16,13 @@ var sh = require('shelljs');
 // TODO: Only install if package does not exist.
 exports.installPackage = function install(package) {
   sh.exec('sudo apt-get -y install ' + package);
+  console.log('Successfully installed ' + package);
 }
 
 exports.removePackage = function remove(package) {
   sh.exec('sudo apt-get -y remove ' + package);
+  console.log('Successfully removed ' + package);
+
 }
 
 
@@ -47,7 +55,6 @@ exports.removeFile = function remove(filepath) {
     console.log('The file ' + filepath + ' has been deleted.');
   }
 }
-
 
 // Daemon Manager
 exports.restartDaemon = function restart(daemon) {
