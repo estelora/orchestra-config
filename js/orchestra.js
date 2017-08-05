@@ -20,14 +20,6 @@ exports.removePackage = function remove(package) {
 
 // File Manager
 
-// TODO: Delete this function if it is not needed.
-exports.watchFile = function watch(path) {
-  fs.watchFile(path, function (curr, prev) {
-    console.log('the current mtime is: ${curr.mtime}');
-    console.log('the previous mtime was: ${prev.mtime}');
-  });
-}
-
 // TODO: Restart the service if the file changes
 exports.writeFile = function write(filepath, contents) {
   /*
