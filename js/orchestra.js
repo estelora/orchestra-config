@@ -12,10 +12,10 @@ sh.config.silent = true;
 // Package Manager
 exports.installPackage = function install(package) {
   var packageStatus = checkPackageStatus(package);
-  if(packageStatus.includes('rc  ' + package)) {
+  if(packageStatus.includes('rc')) {
     sh.exec('sudo apt-get -y install ' + package);
     console.log('Successfully installed ' + package + '.');
-  } else if(packageStatus.includes('ii ' + package)) {
+  } else if(packageStatus.includes('ii')) {
     console.log('Package ' + package + ' already installed.');
   } else {
     //TODO: throw an error
@@ -25,10 +25,10 @@ exports.installPackage = function install(package) {
 
 exports.removePackage = function remove(package) {
   var packageStatus = checkPackageStatus(package).toString();
-  if(packageStatus.includes('ii  ' + package)) {
+  if(packageStatus.includes('ii')) {
     sh.exec('sudo apt-get -y remove ' + package);
-    console.log('Successfully removed ' + package);
-  } else if (packageStatus.includes('rc  ' + package)) {
+    console.log('Successfully removed ' + package + '.');
+  } else if (packageStatus.includes('rc')) {
     console.log('Package ' + package + ' not installed, no need to remove.');
   } else {
     //TODO: throw an error
@@ -44,7 +44,7 @@ function checkPackageStatus(package) {
 
 // File Manager
 
-// TODO: Restart the service if the file changes
+// TODO: Restart the service if the file contents change
 exports.writeFileContents = function write(filepath, contents) {
   /**
   * If file doesn't exist, or if it isn't the same as `contents`
@@ -69,6 +69,7 @@ exports.writeFileContents = function write(filepath, contents) {
     }
   }
 }
+
 
 exports.removeFile = function remove(filepath) {
   // Remove a file if it exists.
