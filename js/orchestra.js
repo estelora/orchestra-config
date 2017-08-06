@@ -1,6 +1,5 @@
 var fs = require('fs');
 var sh = require('shelljs');
-var silentState = sh.config.silent;
 sh.config.silent = true;
 
 /**
