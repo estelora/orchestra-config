@@ -74,6 +74,15 @@ exports.removeFile = function remove(filepath) {
   }
 }
 
+exports.writeFilePermissions = function write(path, mode) {
+  fs.chmodSync(path, mode);
+}
+
+exports.writeFileOwner = function write(path, uid, gid) {
+  fs.chownSync(path, uid, gid);
+}
+
+
 // Daemon Manager
 exports.restartDaemon = function restart(daemon) {
   /**
