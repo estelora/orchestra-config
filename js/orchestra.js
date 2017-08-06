@@ -84,11 +84,13 @@ exports.restartDaemon = function restart(daemon) {
   * Only restart when relevant packages change.
   * Compare cached and current package metadata to determine if a package changed.
   */
-  var cache = daemon + '.cache';
+  var cache = '/var/cache/orchestra/' + daemon + '.cache';
 
   if (!fs.existsSync(cache)) {
     sh.exec('sudo service ' + daemon + ' restart');
     console.log('First restart of ' + daemon + '.');
+    console.log('Creating orchestra cache directory...');
+    sh.exec('sudo mkdir /var/cache/orchestra/');
     cacheDaemonVersion(daemon);
   }
   else {
@@ -105,5 +107,5 @@ exports.restartDaemon = function restart(daemon) {
 }
 
 function cacheDaemonVersion(daemon) {
-  sh.exec('apt-cache show ' + daemon + ' > ' + daemon + '.cache');
+  sh.exec('apt-cache show ' + daemon + ' > /var/cache/orchestra/' + daemon + '.cache');
 }
