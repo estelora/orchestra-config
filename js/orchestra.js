@@ -4,7 +4,6 @@ sh.config.silent = true;
 
 /**
  * TODO: Make this an npm library
- * TODO: Add functionality to specify metadata for files (user, group, permissions) for a file.
  * TODO: Add template string functionality.
  */
 
@@ -39,7 +38,6 @@ function checkPackageStatus(package) {
 }
 
 // File Manager
-
 // TODO: Restart the service if the file contents change
 exports.writeFileContents = function write(filepath, contents) {
   /**
@@ -67,7 +65,6 @@ exports.writeFileContents = function write(filepath, contents) {
 }
 
 exports.removeFile = function remove(filepath) {
-  // Remove a file if it exists.
   if (fs.existsSync(filepath)) {
     fs.unlinkSync(filepath);
     console.log('The file ' + filepath + ' has been deleted.');
@@ -75,10 +72,12 @@ exports.removeFile = function remove(filepath) {
 }
 
 exports.writeFilePermissions = function write(path, mode) {
+  //TODO:  error handling
   fs.chmodSync(path, mode);
 }
 
 exports.writeFileOwner = function write(path, uid, gid) {
+  //TODO: error handling
   fs.chownSync(path, uid, gid);
 }
 
