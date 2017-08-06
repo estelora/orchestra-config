@@ -1,36 +1,52 @@
 var fs = require('fs');
-var format = require('string-template');
 var sh = require('shelljs');
 var silentState = sh.config.silent;
 sh.config.silent = true;
 
-
-/*
+/**
  * TODO: Make this an npm library
- * TODO: Add functionality to specify content and metadata (user, group, permissions) for a file.
+ * TODO: Add functionality to specify metadata for files (user, group, permissions) for a file.
  * TODO: Add template string functionality.
  */
 
 // Package Manager
-
-// TODO: Only install if package does not exist.
 exports.installPackage = function install(package) {
-  sh.exec('sudo apt-get -y install ' + package);
-  console.log('Successfully installed ' + package);
+  var packageStatus = checkPackageStatus(package);
+  if(packageStatus.includes('rc  ' + package)) {
+    sh.exec('sudo apt-get -y install ' + package);
+    console.log('Successfully installed ' + package + '.');
+  } else if(packageStatus.includes('ii ' + package)) {
+    console.log('Package ' + package + ' already installed.');
+  } else {
+    //TODO: throw an error
+     console.log('Package ' + package + ' not found, cannot install.');
+  }
 }
 
 exports.removePackage = function remove(package) {
-  sh.exec('sudo apt-get -y remove ' + package);
-  console.log('Successfully removed ' + package);
+  var packageStatus = checkPackageStatus(package).toString();
+  if(packageStatus.includes('ii  ' + package)) {
+    sh.exec('sudo apt-get -y remove ' + package);
+    console.log('Successfully removed ' + package);
+  } else if (packageStatus.includes('rc  ' + package)) {
+    console.log('Package ' + package + ' not installed, no need to remove.');
+  } else {
+    //TODO: throw an error
+    console.log('Package ' + package + ' not found, cannot remove.');
+  }
 
 }
 
+function checkPackageStatus(package) {
+  var status = sh.exec('dpkg -l ' + package).toString();
+  return status;
+}
 
 // File Manager
 
 // TODO: Restart the service if the file changes
-exports.writeFile = function write(filepath, contents) {
-  /*
+exports.writeFileContents = function write(filepath, contents) {
+  /**
   * If file doesn't exist, or if it isn't the same as `contents`
   * overwrite `contents`
   */
@@ -38,9 +54,15 @@ exports.writeFile = function write(filepath, contents) {
     fs.writeFileSync(filepath, contents);
     console.log('The file ' + filepath + ' has been saved.');
   } else {
-    // Read the file to determine if its contents match the arrangement contents.
+    /**
+    * checkFileMetadata(filepath);
+    * Read the file to determine if its contents match the arrangement contents.
+    */
     var data = fs.readFileSync(filepath, 'utf8');
-    // If the does not match the arrangement contents, write the arrangement contents to the file.
+    /**
+    * If the file's contents do not match the arrangement contents,
+    * write the arrangement contents to the file.
+    */
     if(data !== contents) {
       fs.writeFileSync(filepath, contents);
           console.log('The file ' + filepath + ' has been adjusted to match the arrangement.');
@@ -58,7 +80,7 @@ exports.removeFile = function remove(filepath) {
 
 // Daemon Manager
 exports.restartDaemon = function restart(daemon) {
-  /*
+  /**
   * Only restart when relevant packages change.
   * Compare cached and current package metadata to determine if a package changed.
   */
@@ -77,12 +99,11 @@ exports.restartDaemon = function restart(daemon) {
       console.log('Package version of ' + daemon + ' changed. Restarting ' + daemon + '.');
       cacheDaemonVersion(daemon);
     } else {
-      console.log('Package version is the same. No restart required.');
+      console.log('Package version for ' + daemon + ' is the same. No restart required.');
     }
   }
 }
 
-// Cache the version of the daemon by writing the daemon metadata.
 function cacheDaemonVersion(daemon) {
-  sh.exec('apt list ' + daemon + ' > ' + daemon + '.cache');
+  sh.exec('apt-cache show ' + daemon + ' > ' + daemon + '.cache');
 }
