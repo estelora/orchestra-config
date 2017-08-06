@@ -17,8 +17,7 @@ exports.installPackage = function install(package) {
   } else if(packageStatus.includes('ii  ' +  package)) {
     console.log('Package ' + package + ' already installed.');
   } else {
-    //TODO: throw an error
-     console.log('Package ' + package + ' not found, cannot install.');
+     console.log('Package ' + package + ' not found, will not install.');
   }
 }
 
@@ -30,8 +29,7 @@ exports.removePackage = function remove(package) {
   } else if (packageStatus.includes('rc  ' + package)) {
     console.log('Package ' + package + ' not installed, no need to remove.');
   } else {
-    //TODO: throw an error
-    console.log('Package ' + package + ' not found, cannot remove.');
+    console.log('Package ' + package + ' not found, will not remove.');
   }
 }
 
