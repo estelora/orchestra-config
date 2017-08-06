@@ -13,3 +13,6 @@ node_modules
 
 # Ignore .idea dir
 .idea/
+
+# Ignore .vagrant dir
+.vagrant/
