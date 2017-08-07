@@ -1,6 +1,11 @@
 # orchestra-config
 > A simple configuration management tool.
 
+## Install
+
+```
+npm install --save orchestra-config
+```
 
 ## Supported Platforms
 * Created for Ubuntu Linux
