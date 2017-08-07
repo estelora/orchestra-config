@@ -82,7 +82,6 @@ exports.restartDaemon = function restart (daemon, files = []) {
   }
   if (!fs.existsSync(cache)) {
     console.log(`First restart of ${daemon}.`);
-    console.log(cache);
     console.log('Creating orchestra cache directory...');
 
     mkdirp.sync(orchestraCacheHome);
