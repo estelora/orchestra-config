@@ -48,22 +48,23 @@ exports.removeFile = function remove(filepath) {
   }
 };
 
-exports.writeFilePermissions = function write(path, mode) {
-  fs.chmodSync(path, mode);
+exports.writeFilePermissions = function write(filepath, mode) {
+  fs.chmodSync(filepath, mode);
 };
 
-exports.writeFileOwner = function write(path, uid, gid) {
-  fs.chownSync(path, uid, gid);
+exports.writeFileOwner = function write(filepath, uid, gid) {
+  fs.chownSync(filepath, uid, gid);
 };
 
 // Daemon Manager
 exports.restartDaemon = function restart(daemon, files = []) {
   /**
-   * Only restart when relevant packages change.
+   * Only restart when relevant packages or files change.
    * Compare cached and current package metadata to determine if a package changed.
+   * Compare cached and current file metadata to determine if a file has changed.
    */
 
-  // If any file in the array returns true, restart the daemon.
+  // If any file in the array `files` returns true, restart the daemon.
   var hasFileChanged = files.some(didFileChange);
   var cache = `${orchestraCacheHome}/${daemon}.cache`;
 
