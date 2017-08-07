@@ -1,4 +1,4 @@
-# orchestra
+# orchestra-config
 > A simple configuration management tool.
 
 
@@ -17,7 +17,7 @@
 #### Package Manager
 > Manages debian packages
 
-##### orchestra.installPackage(package);
+##### orchestra.installPackage(pkg);
 > Installs a single debian package, passed in as a string parameter.
 
 * Invocation:
@@ -26,7 +26,7 @@
     // Installs debian package htop
     orchestra.installPackage('htop');
     ```
-##### orchestra.removePackage(package);
+##### orchestra.removePackage(pkg);
 > Removes a single debian package, passed in as a string parameter.
 
 * Invocation:
@@ -114,7 +114,7 @@ orchestra.restartDaemon(`nginx`, ['/etc/nginx/nginx.conf', '/etc/nginx/nginx.con
 sudo node hello-php-arrangement.js
 ```
 ### How to create an arrangement (configuration file)
-> Create an arrangement file that requires `orchestra.js`.
+> Create an arrangement file with `require('orchestra-config');
 
 > It should include orchestra at the top.
 
