@@ -134,8 +134,5 @@ var php = `<?php
   echo "Hello, world!\n"; ?>`;
 ```
 
-## Roadmap
-* Error handling.
-* Publish this an npm module.
 
 
