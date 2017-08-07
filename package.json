@@ -1,0 +1,32 @@
+{
+  "name": "orchestra-config",
+  "version": "1.0.0",
+  "description": "A simple configuration management tool.",
+  "main": "index.js",
+  "dependencies": {
+    "mkdirp": "^0.5.1",
+    "shelljs": "^0.7.8"
+  },
+  "devDependencies": {
+    "semistandard": "^11.0.0"
+  },
+  "scripts": {
+    "test": "semistandard --fix"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/estelora/orchestra.git"
+  },
+  "keywords": [
+    "configuration",
+    "chef",
+    "ubuntu",
+    "debian"
+  ],
+  "author": "Lydia E. Joslin",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/estelora/orchestra/issues"
+  },
+  "homepage": "https://github.com/estelora/orchestra#readme"
+}

@@ -1,4 +1,4 @@
-var orchestra = require('./orchestra.js');
+var orchestra = require('./src/orchestra.js');
 
 var apacheRoot = '/var/www/html';
 var apacheConf = '/etc/apache2/apache2.conf';

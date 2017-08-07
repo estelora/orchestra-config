@@ -1,18 +1,11 @@
-# Ignore .DS_Store files
 .DS_Store
 
-# Ignore Vim temporary files
-*~
-
-# Ignore .swp and .swo files
-*.swp
-*.swo
-
-# Ignore node_modules
+# Ignore
 node_modules
 
-# Ignore .idea dir
 .idea/
 
-# Ignore .vagrant dir
 .vagrant/
+Vagrantfile
+
+*.log
