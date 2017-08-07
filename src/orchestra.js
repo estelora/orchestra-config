@@ -7,6 +7,7 @@ var orchestraCacheHome = `${process.env.HOME}/.cache/orchestra`;
 
 // Package Manager
 exports.installPackage = function install (pkg) {
+  console.log(`Ensuring ${pkg} is installed. . .`);
   sh.exec(`sudo apt-get -y install ${pkg}`);
 };
 
