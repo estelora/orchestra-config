@@ -73,7 +73,13 @@ exports.restartDaemon = function restart (daemon, files = []) {
    */
 
   // If any file in the array `files` returns true, restart the daemon.
-  var hasFileChanged = files.some(didFileChange);
+  var hasFileChanged;
+  files.forEach(function (file) {
+    if (didFileChange(file) === true) {
+      hasFileChanged = true;
+    }
+  });
+
   var cache = `${orchestraCacheHome}/${daemon}.cache`;
   var shouldRestart = false;
 
@@ -136,7 +142,5 @@ function readCacheModifyTime (filepath) {
 
 function cacheDaemonVersion (daemon) {
   var daemonCache = sh.exec(`apt list ${daemon}`);
-
-  console.log(daemonCache.toString());
   fs.writeFileSync(`${orchestraCacheHome}/${daemon}.cache`, daemonCache);
 }
