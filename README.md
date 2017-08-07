@@ -27,7 +27,7 @@ npm install --save orchestra-config
 
 * Invocation:
 
-    ```
+    ```js
     // Installs debian package htop
     orchestra.installPackage('htop');
     ```
@@ -36,7 +36,7 @@ npm install --save orchestra-config
 
 * Invocation:
 
-    ```
+    ```js
     // Removes debian package htop
     orchestra.removePackage('htop');
     ```
@@ -49,11 +49,11 @@ npm install --save orchestra-config
 ##### orchestra.writeFileContents(filepath, contents);
 > Creates a file `filepath` and writes `contents` to `filepath` if it does not yet exist.
 
-> If the `contents` of `filepath` do not match the `contents` specified in the arrangement, the `contents` of filepath are `adjusted` to match what is specified in the arrangement.
+> If the `contents` of `filepath` do not match the `contents` specified in the arrangement, the `contents` of `filepath` are adjusted to match what is specified in the arrangement.
 
 * Invocation:
 
-```
+```js
 // Writes contents 'Hello World!' to filepath `/${process.env.HOME}/hello.txt`
 orchestra.writeFileContents(`/${process.env.HOME}/hello.txt`, 'Hello, World!');
 ```
@@ -63,7 +63,7 @@ orchestra.writeFileContents(`/${process.env.HOME}/hello.txt`, 'Hello, World!');
 
 * Invocation:
 
-```
+```js
 // Removes `/${process.env.HOME}/hello.txt`
 orchestra.removeFile(`/${process.env.HOME}/hello.txt`);
 ```
@@ -81,7 +81,7 @@ orchestra.writeFileOwner(`/${process.env.HOME}/hello.txt`, 0755);
 ##### writeFileOwner(filepath, uid, gid);
 > Adjusts user `uid` and groud `guid` for a given file `filepath`.
 
-```
+```js
 // Sets user to root (`0`) to and group to root (`0`) for `/${process.env.HOME}/hello.txt`.
 orchestra.writeFilePermissions(`/${process.env.HOME}/hello.txt`, 0, 0);
 ```
@@ -102,7 +102,7 @@ orchestra.writeFilePermissions(`/${process.env.HOME}/hello.txt`, 0, 0);
 
 Invocation:
 
-```
+```js
 // Restarts daemon `nginx` if relevant conf files:
 // '/etc/nginx/nginx.conf' & '/etc/nginx/nginx.conf' have changed.
 // Restarts daemon `nginx` if the package version
@@ -133,11 +133,12 @@ sudo node hello-php-arrangement.js
 #### Set variables as strings as contents for files you need orchestra to write.
 * Example
 
-```
+```js
 var php = `<?php
   header("Content-Type: text/plain");
   echo "Hello, world!\n"; ?>`;
 ```
-
+## Roadmap
+* Add more error handling.
 
 
