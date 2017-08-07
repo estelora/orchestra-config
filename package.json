@@ -1,6 +1,6 @@
 {
   "name": "orchestra-config",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "A simple configuration management tool.",
   "main": "index.js",
   "dependencies": {
