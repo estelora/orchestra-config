@@ -9,7 +9,7 @@
 ## Setup
 * Clone or download this repository onto your Ubuntu machine.
 * Bootstrap your machine to get things ready:
-    * Run `sudo chmod 0755 boostrap.sh` in the `shell` directory.
+    * Run `sudo chmod 0755 boostrap.sh` in the project directory.
     * Execute this file: `./bootstrap.sh`.
 * Create an arrangement!
 
@@ -70,7 +70,7 @@ orchestra.removeFile(`/${process.env.HOME}/hello.txt`);
 
 ```
 // Sets access permissions `/${process.env.HOME}/hello.txt` to `0755`.
-orchestra.writeFilePermissions(`/${process.env.HOME}/hello.txt`, 0755);
+orchestra.writeFileOwner(`/${process.env.HOME}/hello.txt`, 0755);
 ```
 
 ##### writeFileOwner(filepath, uid, gid);
@@ -116,10 +116,10 @@ sudo node hello-php-arrangement.js
 ### How to create an arrangement (configuration file)
 > Create an arrangement file that requires `orchestra.js`.
 
-> It should include `var orchestra = require('./orchestra.js');` as a global variable.
+> It should include orchestra at the top.
 
 ### How to configure an arrangement
-    * An example arrangement included in this repository is `hello-php-arrangement.js`.
+* An example arrangement included in this repository is `hello-php-arrangement.js`.
 #### Manage packages first.
 #### Configure files you need.
 #### Finally, add the restartDaemon() function at the end.
@@ -133,9 +133,6 @@ var php = `<?php
   header("Content-Type: text/plain");
   echo "Hello, world!\n"; ?>`;
 ```
-####
-
-
 
 ## Roadmap
 * Error handling.
