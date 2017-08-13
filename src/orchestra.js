@@ -1,11 +1,13 @@
 var fs = require('fs');
 var sh = require('shelljs');
 var mkdirp = require('mkdirp');
-sh.config.silent = true;
+sh.config.silent = false;
 
 var orchestraCacheHome = `${process.env.HOME}/.cache/orchestra`;
 
 // Package Manager
+exports.cleanPackageCache = function() {};
+
 exports.installPackage = function install (pkg) {
   console.log(`Ensuring ${pkg} is installed. . .`);
   sh.exec(`sudo apt-get -y install ${pkg}`);
@@ -13,6 +15,17 @@ exports.installPackage = function install (pkg) {
 
 exports.removePackage = function remove (pkg) {
   sh.exec(`sudo apt-get -y remove ${pkg}`);
+};
+
+//Command Manager
+
+exports.executeCommand = function exec(command) {
+  /**
+   * Executes a shell command 'command'
+   *  TODO: add cwd option, like chef?
+   */
+  sh.exec(command);
+  console.log(`Executing shell command: ${command}`);
 };
 
 // File Manager
@@ -34,6 +47,35 @@ exports.writeFileContents = function write (filepath, contents) {
     if (data !== contents) {
       fs.writeFileSync(filepath, contents);
 
+      console.log(
+        `The file ${filepath} has been adjusted to match the arrangement.`
+      );
+    }
+  }
+};
+
+
+exports.appendFileContents = function append(filepath, contents) {
+  /**
+   * Appends `contents` to the end of a file in  `filepath`.
+   * If `contents` are already contained in file  `filepath`,
+   * does not append `contents` to the end of file `filepath`.
+   */
+  if (!fs.existsSync(filepath)) {
+    sh.exec(`${contents} | sudo tee ${filepath}`);
+    console.log(`The file ${filepath} has been saved.`);
+  } else {
+    /**
+     *  TODO: Read the file to determine if its contents CONTAIN the arrangement contents.
+     */
+    var data = fs.readFileSync(filepath, 'utf8');
+    /**
+     *  TODO: Read the file to determine if its contents CONTAIN the arrangement contents.
+     * If the file's contents do not CONTAIN the arrangement contents,
+     * write the arrangement contents to the file.
+     */
+    if (data !== contents) {
+      sh.exec(`${contents} | sudo tee ${filepath}`);
       console.log(
         `The file ${filepath} has been adjusted to match the arrangement.`
       );
