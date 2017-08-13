@@ -17,5 +17,7 @@ curl -sL https://deb.nodesource.com/setup_8.x | sudo -E bash -
 
 # install node & npm
 sudo apt-get -y install nodejs
+npm install
+
 
 
