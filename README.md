@@ -22,6 +22,15 @@ npm install --save orchestra-config
 #### Package Manager
 > Manages debian packages
 
+##### orchestra.cleanPackageCache():
+> Refreshes the apt-get package cache.
+
+* Invocation:
+
+   ```js
+   orchestra.cleanPackageCache();
+   ```
+
 ##### orchestra.installPackage(pkg);
 > Installs a single debian package, passed in as a string parameter.
 
@@ -42,7 +51,7 @@ npm install --save orchestra-config
     ```
 
 #### File Manager
-> Writes content to files, removes files.
+> Writes content to files, appends contents to files, & removes files.
 
 > Writes metadata to files, including permissions, user, and group.
 
@@ -56,6 +65,16 @@ npm install --save orchestra-config
 ```
 // Writes contents 'Hello World!' to filepath `/${process.env.HOME}/hello.txt`
 orchestra.writeFileContents(`/${process.env.HOME}/hello.txt`, 'Hello, World!');
+```
+
+##### orchestra.appendFileContentst(filepath, contents);
+> Appends `contents` to the end of file `filepath` if `filepath` does not already contain `contents`.
+
+* Invocation:
+
+```
+// Appends `contents` '127.0.0.1 localhost' to `filepath` `/etc/hosts`
+orchestra.appendFileContents('127.0.0.1 localhost', '/etc/hosts');
 ```
 
 ##### orchestra.removeFile(filepath);
@@ -138,6 +157,3 @@ var php = `<?php
   header("Content-Type: text/plain");
   echo "Hello, world!\n"; ?>`;
 ```
-
-
-
