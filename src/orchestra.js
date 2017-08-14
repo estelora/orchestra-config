@@ -15,7 +15,6 @@ exports.removePackage = function remove (pkg) {
   sh.exec(`sudo apt-get -y remove ${pkg}`);
 };
 
-
 // File Manager
 exports.writeFileContents = function write (filepath, contents) {
   /**

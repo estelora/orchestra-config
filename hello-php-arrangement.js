@@ -29,5 +29,5 @@ orchestra.appendFileContents(apacheConf, 'ServerName    localhost');
 orchestra.writeFileContents(hostname, 'localhost');
 
 
-// Restart the Apache service, if needed
+// Restart the Apache service
 orchestra.restartDaemon('apache2', relevantFiles);
