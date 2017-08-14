@@ -26,7 +26,6 @@ npm install --save orchestra-config
 > Installs a single debian package, passed in as a string parameter.
 
 * Invocation:
-
     ```
     // Installs debian package htop
     orchestra.installPackage('htop');
@@ -42,7 +41,7 @@ npm install --save orchestra-config
     ```
 
 #### File Manager
-> Writes content to files, removes files.
+> Writes content to files, appends contents to files, & removes files.
 
 > Writes metadata to files, including permissions, user, and group.
 
@@ -56,6 +55,16 @@ npm install --save orchestra-config
 ```
 // Writes contents 'Hello World!' to filepath `/${process.env.HOME}/hello.txt`
 orchestra.writeFileContents(`/${process.env.HOME}/hello.txt`, 'Hello, World!');
+```
+
+##### orchestra.appendFileContentst(filepath, contents);
+> Appends `contents` to the end of file `filepath` if `filepath` does not already contain `contents`.
+
+* Invocation:
+
+```
+// Appends `contents` '127.0.0.1 localhost' to `filepath` `/etc/hosts`
+orchestra.appendFileContents('127.0.0.1 localhost', '/etc/hosts');
 ```
 
 ##### orchestra.removeFile(filepath);
@@ -131,13 +140,10 @@ sudo node hello-php-arrangement.js
 > This allows your service to restart when files relevant to it change.
 
 #### Set variables as strings as contents for files you need orchestra to write.
-* Example
+* Example:
 
 ```
 var php = `<?php
   header("Content-Type: text/plain");
   echo "Hello, world!\n"; ?>`;
 ```
-
-
-

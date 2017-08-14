@@ -1,7 +1,7 @@
 var fs = require('fs');
 var sh = require('shelljs');
 var mkdirp = require('mkdirp');
-sh.config.silent = true;
+sh.config.silent = false;
 
 var orchestraCacheHome = `${process.env.HOME}/.cache/orchestra`;
 
@@ -14,6 +14,7 @@ exports.installPackage = function install (pkg) {
 exports.removePackage = function remove (pkg) {
   sh.exec(`sudo apt-get -y remove ${pkg}`);
 };
+
 
 // File Manager
 exports.writeFileContents = function write (filepath, contents) {
@@ -34,6 +35,26 @@ exports.writeFileContents = function write (filepath, contents) {
     if (data !== contents) {
       fs.writeFileSync(filepath, contents);
 
+      console.log(
+        `The file ${filepath} has been adjusted to match the arrangement.`
+      );
+    }
+  }
+};
+
+exports.appendFileContents = function append(filepath, contents) {
+  /**
+   * Appends `contents` to the end of a file in  `filepath`.
+   * If `contents` are already contained in file  `filepath`,
+   * does not append `contents` to the end of file `filepath`.
+   */
+  if (!fs.existsSync(filepath)) {
+    console.log(`File does not exist, cannot append to ${filepath}`);
+  } else {
+    var existingFile = fs.readFileSync(filepath, 'utf8');
+
+    if (!existingFile.includes(contents)) {
+      fs.appendFileSync(filepath, contents)
       console.log(
         `The file ${filepath} has been adjusted to match the arrangement.`
       );
