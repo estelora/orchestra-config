@@ -3,9 +3,6 @@
 # clean the package manager cache
  sudo apt-get clean
 
-# force install packages that may have unmet dependencies
-sudo apt-get -f install
-
 # check for updates
 sudo apt-get -y update
 
