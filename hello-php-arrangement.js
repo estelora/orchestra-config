@@ -6,11 +6,11 @@ var apacheSitesAvailable = '/etc/apache2/conf-available/servername.conf';
 var hostname = '/etc/hostname';
 
 var relevantFiles = [
-    `${apacheRoot}/index.php`,
-    `${apacheRoot}/index.html`,
-    apacheConf,
-    apacheSitesAvailable,
-    hostname
+  `${apacheRoot}/index.php`,
+  `${apacheRoot}/index.html`,
+  apacheConf,
+  apacheSitesAvailable,
+  hostname
 ];
 
 var php = `<?php
@@ -27,7 +27,6 @@ orchestra.removeFile(`${apacheRoot}/index.html`, 'apache2');
 orchestra.writeFileContents(`${apacheRoot}/index.php`, php);
 orchestra.appendFileContents(apacheConf, 'ServerName    localhost');
 orchestra.writeFileContents(hostname, 'localhost');
-
 
 // Restart the Apache service
 orchestra.restartDaemon('apache2', relevantFiles);

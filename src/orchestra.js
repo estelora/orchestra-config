@@ -41,7 +41,7 @@ exports.writeFileContents = function write (filepath, contents) {
   }
 };
 
-exports.appendFileContents = function append(filepath, contents) {
+exports.appendFileContents = function append (filepath, contents) {
   /**
    * Appends `contents` to the end of a file in  `filepath`.
    * If `contents` are already contained in file  `filepath`,
@@ -53,7 +53,7 @@ exports.appendFileContents = function append(filepath, contents) {
     var existingFile = fs.readFileSync(filepath, 'utf8');
 
     if (!existingFile.includes(contents)) {
-      fs.appendFileSync(filepath, contents)
+      fs.appendFileSync(filepath, contents);
       console.log(
         `The file ${filepath} has been adjusted to match the arrangement.`
       );
