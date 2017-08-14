@@ -19,10 +19,10 @@ npm install --save orchestra-config
 * Create an arrangement!
 
 ## Overview
-#### Package Manager
+### Package Manager
 > Manages debian packages
 
-##### orchestra.installPackage(pkg);
+#### orchestra.installPackage(pkg);
 > Installs a single debian package, passed in as a string parameter.
 
 * Invocation:
@@ -30,7 +30,7 @@ npm install --save orchestra-config
     // Installs debian package htop
     orchestra.installPackage('htop');
     ```
-##### orchestra.removePackage(pkg);
+#### orchestra.removePackage(pkg);
 > Removes a single debian package, passed in as a string parameter.
 
 * Invocation:
@@ -40,15 +40,13 @@ npm install --save orchestra-config
     orchestra.removePackage('htop');
     ```
 
-#### File Manager
-> Writes content to files, appends contents to files, & removes files.
+### File Manager
+> * Writes content to files, appends contents to files, & removes files.
+> * Writes metadata to files, including permissions, user, and group.
 
-> Writes metadata to files, including permissions, user, and group.
-
-##### orchestra.writeFileContents(filepath, contents);
-> Creates a file `filepath` and writes `contents` to `filepath` if it does not yet exist.
-
-> If the `contents` of `filepath` do not match the `contents` specified in the arrangement, the `contents` of filepath are `adjusted` to match what is specified in the arrangement.
+#### orchestra.writeFileContents(filepath, contents);
+> * Creates a file `filepath` and writes `contents` to `filepath` if it does not yet exist.
+> * If the `contents` of `filepath` do not match the `contents` specified in the arrangement, the `contents` of filepath are adjusted to match what is specified in the arrangement.
 
 * Invocation:
 
@@ -57,7 +55,7 @@ npm install --save orchestra-config
 orchestra.writeFileContents(`/${process.env.HOME}/hello.txt`, 'Hello, World!');
 ```
 
-##### orchestra.appendFileContentst(filepath, contents);
+#### orchestra.appendFileContentst(filepath, contents);
 > Appends `contents` to the end of file `filepath` if `filepath` does not already contain `contents`.
 
 * Invocation:
@@ -67,7 +65,7 @@ orchestra.writeFileContents(`/${process.env.HOME}/hello.txt`, 'Hello, World!');
 orchestra.appendFileContents('127.0.0.1 localhost', '/etc/hosts');
 ```
 
-##### orchestra.removeFile(filepath);
+#### orchestra.removeFile(filepath);
 > Removes a file if it exists.
 
 * Invocation:
@@ -77,7 +75,7 @@ orchestra.appendFileContents('127.0.0.1 localhost', '/etc/hosts');
 orchestra.removeFile(`/${process.env.HOME}/hello.txt`);
 ```
 
-##### writeFilePermissions(filepath, mode);
+#### writeFilePermissions(filepath, mode);
 > Adjusts access permissions `mode` on a `filepath`.
 
 * Invocation:
@@ -87,7 +85,7 @@ orchestra.removeFile(`/${process.env.HOME}/hello.txt`);
 orchestra.writeFileOwner(`/${process.env.HOME}/hello.txt`, 0755);
 ```
 
-##### writeFileOwner(filepath, uid, gid);
+#### writeFileOwner(filepath, uid, gid);
 > Adjusts user `uid` and groud `guid` for a given file `filepath`.
 
 ```
@@ -95,19 +93,15 @@ orchestra.writeFileOwner(`/${process.env.HOME}/hello.txt`, 0755);
 orchestra.writeFilePermissions(`/${process.env.HOME}/hello.txt`, 0, 0);
 ```
 
-#### Daemon Manager
-> Restarts a service when relevant files and packages have changed.
+### Daemon Manager
+> * Restarts a service when relevant files and packages have changed.
+> * Checks if a file has changed.
+> * Caches a file's modify time.
+> * Caches the version of a daemon.
 
-> Checks if a file has changed.
-
-> Caches a file's modify time.
-
-> Caches the version of a daemon.
-
-##### orchestra.restartDaemon(daemon, files = []);
-> Restarts a daemon if the daemon package version has changed.
-
-> Restarts a daemon if a relevant file in array `files` has changed.
+#### orchestra.restartDaemon(daemon, files = []);
+> * Restarts a daemon if the daemon package version has changed.
+> * Restarts a daemon if a relevant file in array `files` has changed.
 
 Invocation:
 
@@ -121,25 +115,28 @@ orchestra.restartDaemon(`nginx`, ['/etc/nginx/nginx.conf', '/etc/nginx/nginx.con
 
 ## Usage
 > This configuration manager only runs when it is executed on the command line.
+
 ### Run an arrangement
 * Execute an arrangement with node on the command line.
 
 ```
 sudo node hello-php-arrangement.js
 ```
-### How to create an arrangement (configuration file)
-> Create an arrangement file with `require('orchestra-config');
+## How to create an arrangement (configuration file)
+> Create an arrangement file with `require('orchestra-config');`
+It should include orchestra at the top.
 
-> It should include orchestra at the top.
+## How to configure an arrangement
+* An sample arrangement included in this repository is `hello-php-arrangement.js`.
 
-### How to configure an arrangement
-* An example arrangement included in this repository is `hello-php-arrangement.js`.
-#### Manage packages first.
-#### Configure files you need.
-#### Finally, add the restartDaemon() function at the end.
+### Manage packages first.
+
+### Configure files you need.
+
+### Finally, add the restartDaemon() function at the end.
 > This allows your service to restart when files relevant to it change.
 
-#### Set variables as strings as contents for files you need orchestra to write.
+### Set variables as strings as contents for files you need orchestra to write.
 * Example:
 
 ```
