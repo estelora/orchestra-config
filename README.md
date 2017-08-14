@@ -22,20 +22,10 @@ npm install --save orchestra-config
 #### Package Manager
 > Manages debian packages
 
-##### orchestra.cleanPackageCache():
-> Refreshes the apt-get package cache.
-
-* Invocation:
-
-   ```js
-   orchestra.cleanPackageCache();
-   ```
-
 ##### orchestra.installPackage(pkg);
 > Installs a single debian package, passed in as a string parameter.
 
 * Invocation:
-
     ```
     // Installs debian package htop
     orchestra.installPackage('htop');
@@ -150,7 +140,7 @@ sudo node hello-php-arrangement.js
 > This allows your service to restart when files relevant to it change.
 
 #### Set variables as strings as contents for files you need orchestra to write.
-* Example
+* Example:
 
 ```
 var php = `<?php
