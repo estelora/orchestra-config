@@ -144,3 +144,7 @@ var php = `<?php
   header("Content-Type: text/plain");
   echo "Hello, world!\n"; ?>`;
 ```
+
+## Roadmap
+* Allow templating for writing file contents
+* Allow file manager to get file contents outside of the arrangement.
